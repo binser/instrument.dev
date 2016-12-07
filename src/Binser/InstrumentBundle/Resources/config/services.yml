@@ -14,3 +14,27 @@ services:
     arguments: [~, Binser\InstrumentBundle\Entity\Post, ~]
     tags:
       - { name: sonata.admin, manager_type: orm, group: Статейник, label: Посты }
+
+  admin.service:
+    class: Binser\InstrumentBundle\Admin\ServiceAdmin
+    arguments: [~, Binser\InstrumentBundle\Entity\Service, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Услуги, label: Услуги }
+
+  admin.category:
+    class: Binser\InstrumentBundle\Admin\CategoryAdmin
+    arguments: [~, Binser\InstrumentBundle\Entity\Category, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Интернет магазин, label: Категории }
+
+  admin.subcategory:
+    class: Binser\InstrumentBundle\Admin\SubCategoryAdmin
+    arguments: [~, Binser\InstrumentBundle\Entity\SubCategory, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm,  group: Интернет магазин, label: Подкатегории }
+
+  admin.product:
+    class: Binser\InstrumentBundle\Admin\ProductAdmin
+    arguments: [~, Binser\InstrumentBundle\Entity\Product, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm,  group: Интернет магазин, label: Продукты }

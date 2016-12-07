@@ -8,10 +8,10 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class PostAdmin extends Admin
+class ServiceAdmin extends Admin
 {
-    protected $baseRouteName = 'post';
-    protected $baseRoutePattern = 'post';
+    protected $baseRouteName = 'service';
+    protected $baseRoutePattern = 'service';
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
@@ -28,15 +28,10 @@ class PostAdmin extends Admin
     {
         $formMapper
             ->add('title', null, array('label' => 'Заголовок'))
-            ->add('image', 'sonata_media_type', array(
-                'label' => 'Картинка',
-                'provider' => 'sonata.media.provider.image',
-                'context'  => 'post',
-                'required' => false
-            ))
-            ->add('anons', null, array('label' => 'Анонс'))
+            ->add('price', null, array('label' => 'Цена, РУБ'))
+            ->add('link', null, array('label' => 'Ссылка на страницу услуги', 'attr' => array('placeholder' => 'Латинские буквы и символ -')))
             ->add('text', 'ckeditor', array(
-                    'label' => 'Текст',
+                    'label' => 'Структура страницы услуги',
                     'config' => array(
                         'filebrowserBrowseRoute' => 'elfinder',
                         'filebrowserBrowseRouteParameters' => array('instance' => 'default')
@@ -55,7 +50,6 @@ class PostAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title', null, array('label' => 'Заголовок'))
-            ->add('anons', null, array('label' => 'Анонс'))
-            ->add('image', 'string', array('template' => 'SonataMediaBundle:MediaAdmin:list_image.html.twig'));
+            ->add('price', null, array('label' => 'Цена'));
     }
 }
