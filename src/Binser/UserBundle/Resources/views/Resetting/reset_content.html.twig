@@ -1,0 +1,41 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+<div class="row">
+    <div class="col-sm-offset-3 col-sm-6 col_form">
+        {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset form-horizontal reset_password_form' } }) }}
+        <div class="form-group">
+            <div class="col-sm-4 text-right">
+                {{ form_label(form.plainPassword.first) }}
+            </div>
+            <div class="col-sm-8">
+                {{ form_widget(form.plainPassword.first) }}
+                <span class="text-danger">
+                    {{ form_errors(form.plainPassword.first) }}
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4 text-right">
+                {{ form_label(form.plainPassword.second) }}
+            </div>
+            <div class="col-sm-8">
+                {{ form_widget(form.plainPassword.second) }}
+                <span class="text-danger">
+                    {{ form_errors(form.plainPassword.second) }}
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="btn btn-success my_btn">
+                    {{ 'resetting.reset.submit'|trans }}
+                </button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>

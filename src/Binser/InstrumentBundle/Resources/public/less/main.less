@@ -1,0 +1,555 @@
+@yellow: #fbcb00;
+@black: #121212;
+
+@font-face {
+  font-family: "PF DinDisplay Pro";
+  src: url(../fonts/ufonts.com_pfdindisplaypro-regular.ttf);
+}
+
+@font-face {
+  font-family: "PF DinDisplay Pro Italic";
+  src: url(../fonts/pfdindisplaypro-thinital.ttf);
+}
+
+@import "media.less";
+
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "PF DinDisplay Pro", sans-serif;
+  color: @black;
+}
+a, button {
+  &:active, &:focus {
+    outline: none !important;
+  }
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  padding: 0 0 350px 0;
+  #header {
+    border-bottom: 3px solid @black;
+    padding: 15px 0;
+    #logo_block {
+      text-align: center;
+      img {
+        width: 95%;
+        max-width: 300px;
+      }
+    }
+    #info_header_block {
+      padding: 0;
+      .info_block {
+        padding: 0;
+        .img {
+          padding: 0;
+          text-align: center;
+          img {
+            width: 95%;
+            max-width: 34px;
+            max-height: 34px;
+          }
+        }
+        .text {
+          font-size: 14px;
+          line-height: 1.5;
+          padding-left: 3px;
+          padding-right: 3px;
+          font-weight: 500;
+          .header_info_block {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+          }
+          .our_phone {
+            padding-left: 31px;
+          }
+        }
+      }
+      .header_button {
+        text-transform: uppercase;
+        font-size: 18px;
+        border: none;
+        background-color: #fccc00;
+        border-radius: 7px;
+        width: 180px;
+      }
+      #call_block {
+        text-align: center;
+        padding: 0;
+        .tel {
+          font-size: 16px;
+          color: #bfbfbf;
+        }
+        .social_icon {
+          display: inline-block;
+          margin: 5px 3px;
+          width: 37px;
+          height: 37px;
+          &.icon-vk:hover {
+            background-position: -74px -37px;
+          }
+          &.icon-facebook:hover {
+            background-position: -37px 0;
+          }
+          &.icon-instagramm:hover {
+            background-position: -37px -37px;
+          }
+          &.icon-youtube:hover {
+            background-position: -37px -74px;
+          }
+        }
+      }
+      #login_block {
+        text-align: center;
+        input.header_login_input {
+          border: 0;
+          color: @black !important;
+          text-align: center;
+          margin: 2px 0;
+          &[placeholder], &::-moz-placeholder, &:-moz-placeholder, &:-ms-input-placeholder, &::-webkit-input-placeholder {
+            color: @black !important;
+          }
+        }
+        .reg_link {
+          text-decoration: underline;
+          color: @black;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-default {
+    border: none;
+    border-radius: 0;
+    background: #fff;
+    margin-bottom: 0;
+    .navbar-nav {
+      & > li {
+        box-sizing: border-box;
+        &.first {
+          margin-left: 15px;
+        }
+        &.last a:after {
+          content: "";
+          display: none;
+        }
+        &.active {
+          & > a {
+            color: @black !important;
+            background-color: @yellow;
+            &:after {
+              content: "";
+              display: inline-block;
+              background: url("/bundles/binserinstrument/images/menu_line.jpg") repeat-y;
+              width: 1px;
+              height: 100%;
+              position: absolute;
+              right: 0;
+              top: 0;
+            }
+            &:before {
+              content: "";
+              display: inline-block;
+              background: url("/bundles/binserinstrument/images/menu_line.jpg") repeat-y;
+              width: 1px;
+              height: 100%;
+              position: absolute;
+              left: 0;
+              top: 0;
+            }
+            &:hover {
+              text-decoration: none;
+              cursor: default;
+            }
+          }
+        }
+        &:hover {
+          background-color: @yellow;
+          > a {
+            &:after {
+              content: "";
+              display: inline-block;
+              background: url("/bundles/binserinstrument/images/menu_line.jpg") repeat-y;
+              width: 1px;
+              height: 100%;
+              position: absolute;
+              right: 0;
+              top: 0;
+            }
+            &:before {
+              content: "";
+              display: inline-block;
+              background: url("/bundles/binserinstrument/images/menu_line.jpg") repeat-y;
+              width: 1px;
+              height: 100%;
+              position: absolute;
+              left: 0;
+              top: 0;
+            }
+          }
+        }
+        a {
+          text-transform: uppercase;
+          color: @black !important;
+          font-size: 18px;
+          padding: 10px 20px;
+          &:hover {
+            text-decoration: underline;
+          }
+          &:after {
+            content: "";
+            display: inline-block;
+            background: url("/bundles/binserinstrument/images/menu_line.jpg") no-repeat;
+            width: 1px;
+            height: 17px;
+            position: absolute;
+            right: -1px;
+          }
+        }
+
+        &.dropdown {
+          .dropdown-menu {
+            left: 0;
+            top: 40px;
+            border: 1px solid @black;
+            border-top: none;
+            border-radius: 0;
+            background: #fff;
+            width: 153px;
+            min-width: 153px;
+            li {
+              width: 100%;
+              position: relative;
+              padding-left: 20px;
+              a {
+                text-transform: lowercase;
+                font-family: "PF DinDisplay Pro Italic", sans-serif;
+                font-size: 16px;
+                color: @black;
+                white-space: normal;
+                padding: 10px;
+                &::before {
+                  content: "";
+                  width: 7px;
+                  height: 7px;
+                  background: url("/bundles/binserinstrument/images/yellow_point.png");
+                  display: inline-block;
+                  position: absolute;
+                  top: 17px;
+                  left: 15px;
+                }
+                &::after {
+                  content: "";
+                }
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /*Главная страница*/
+  #offer_block {
+    padding: 20px 0;
+    .header_img {
+      width: 95%;
+    }
+    .content_img {
+      width: 95%;
+      display: inline-block;
+      margin: 10px 0;
+    }
+    .offer_block_text {
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+    .offer_block_link {
+      text-decoration: underline;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: @black;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  #for_and_shop_block {
+    padding: 30px 0;
+    #for_block {
+      .header_block {
+        font-size: 46px;
+        color: @yellow;
+        background-color: @black;
+        text-transform: uppercase;
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      #for_large_block, #for_small_block {
+        .row {
+          position: relative;
+          height: 184px;
+          width: 100%;
+          margin: 30px 0 0 0;
+          .grey_img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+          }
+          .grey_text {
+            color: #fff;
+            background-color: #454545;
+            font-size: 22px;
+            text-transform: uppercase;
+            width: 50%;
+            padding: 5px 7px 5px 120px;
+            position: absolute;
+            top: 0;
+            left: 80px;
+            border-radius: 5px;
+            height: 72px;
+            &.one_line {
+              line-height: 62px;
+            }
+          }
+          .yellow_img {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 10;
+          }
+          .yellow_text {
+            background-color: @yellow;
+            font-size: 22px;
+            text-transform: uppercase;
+            width: 50%;
+            padding: 5px 120px 5px 25px;
+            position: absolute;
+            bottom: 0;
+            right: 80px;
+            border-radius: 5px;
+            height: 72px;
+            &.one_line {
+              line-height: 62px;
+            }
+          }
+        }
+      }
+      #for_small_block {
+        display: none;
+        .row {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    #shop_block {
+      padding: 0 30px 50px 0;
+      background: url("/bundles/binserinstrument/images/shop_block_background.jpg") repeat bottom left;
+      margin-top: 41px;
+      #firm_shop {
+        border-radius: 15px;
+        border: 1px solid @black;
+        margin-top: -41px;
+        .header_block {
+          background-color: @yellow;
+          text-transform: uppercase;
+          font-size: 24px;
+          border-bottom: 1px solid @black;
+          text-align: center;
+          padding: 3px 0;
+          border-radius: 15px 15px 0 0;
+        }
+        .products {
+          padding-bottom: 55px;
+          text-align: center;
+          background-color: #fff;
+          border-radius: 0 0 15px 15px;
+          .product {
+            position: relative;
+            padding-top: 30px;
+            .info_product {
+              font-size: 20px;
+              text-transform: uppercase;
+            }
+            img {
+              max-width: 80%;
+              max-height: 200px;
+            }
+            .product_page_link {
+              display: block;
+              position: absolute;
+              width: 120px;
+              left: 50%;
+              margin-left: -60px;
+              bottom: 50px;
+              padding: 3px;
+              text-transform: uppercase;
+              background-color: @yellow;
+              color: @black;
+              font-size: 18px;
+              border-radius: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #problems_block {
+    padding: 20px 0;
+    .header_block {
+      background-color: @black;
+      color: @yellow;
+      border-radius: 15px;
+      font-size: 32px;
+      padding: 5px 0;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .row {
+      margin-top: 20px;
+      .col-sm-3, .col-sm-4 {
+        &.col-sm-offset-15 {
+          margin-left: 12.5%;
+        }
+        padding: 0 25px;
+        text-align: center;
+        .top_text {
+          text-transform: uppercase;
+          font-size: 18px;
+          text-align: center;
+          min-height: 84px;
+        }
+        img {
+          max-width: 90%;
+        }
+        .bottom_text {
+          font-size: 14px;
+          text-align: center;
+          .link {
+            text-decoration: underline;
+            color: @black;
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #trust_block {
+    padding: 20px 0 50px 0;
+    .header_block {
+      background-color: @yellow;
+      border-radius: 15px;
+      font-size: 36px;
+      padding: 5px 0;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .slide {
+      height: 250px;
+      line-height: 250px;
+      text-align: center;
+      img {
+        display: inline-block;
+        vertical-align: middle;
+        max-height: 95%;
+        width: 80%;
+      }
+    }
+    .slick-next {
+      &::before {
+        content: '';
+        display: none;
+      }
+      width: 24px;
+      height: 48px;
+      background: url("/bundles/binserinstrument/images/trust/arrow_right.png") no-repeat;
+    }
+    .slick-prev {
+      &::before {
+        content: '';
+        display: none;
+      }
+      width: 24px;
+      height: 48px;
+      background: url("/bundles/binserinstrument/images/trust/arrow_left.png") no-repeat;
+    }
+  }
+
+  /*Страницы магазина*/
+  @import "shop.less";
+  /*Страницы сайта*/
+  @import "blog.less";
+}
+
+#footer {
+  height: 350px;
+  margin-top: -350px;
+  border-top: 50px solid @yellow;
+  padding: 45px 0;
+  font-size: 16px;
+  .upper_text {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .social_icon {
+    display: inline-block;
+    margin: 15px 3px;
+    width: 37px;
+    height: 37px;
+    &.icon-vk:hover {
+      background-position: -74px -37px;
+    }
+    &.icon-facebook:hover {
+      background-position: -37px 0;
+    }
+    &.icon-instagramm:hover {
+      background-position: -37px -37px;
+    }
+    &.icon-youtube:hover {
+      background-position: -37px -74px;
+    }
+  }
+}
+
+.my_btn {
+  font-size: 18px;
+  padding: 3px 30px;
+  border-radius: 10px;
+  color: @black;
+  background-color: @yellow;
+  border-color: @yellow;
+  text-transform: uppercase;
+  &:hover {
+    border-color: @black !important;
+    color: @black !important;
+    background-color: @yellow !important;
+  }
+}

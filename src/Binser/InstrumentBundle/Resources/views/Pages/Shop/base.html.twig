@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    {% block sale_block %}
+        <div class="container-fluid text-center" id="sale_block">
+            ТОЛЬКО В ДЕКАБРЕ!&nbsp;&nbsp;&nbsp;ЗАТОЧКА КАЖДОГО 5 ИЗДЕЛИЯ БЕСПЛАТНО!
+        </div>
+    {% endblock %}
+    {% block search_block %}
+        <div class="container" id="search_and_basket_block">
+            <div class="row">
+                <div class="col-sm-8" id="search_block">
+                    <input type="text" id="search_input" name="search">
+                    <div id="search_button">
+                        поиск
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-right" id="basket_block">
+                    <div class="basket_text">
+                        <div class="empty_basket">
+                            Корзина пуста
+                        </div>
+                        <div class="full_basket">
+                            <span class="summ_basket">0</span> руб.
+                        </div>
+                    </div>
+                    <img src="{{ asset('bundles/binserinstrument/images/basket.png') }}" alt="Корзина">
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block shop_content %}
+    {% endblock %}
+
+    {% block shop_text %}
+        <div class="container" id="bottom_text">
+            <p class="shop_bottom_text text-center">Заточка инструмента</p>
+            <p class="shop_bottom_text">
+                Услуги по заточке инструмента оказываются специалистами торгово-технического центра «ТехноМастер», исходя из
+                индивидуальных потребностей каждого клиента. Мы стараемся в самые сжатые сроки предоставить заказчику
+                наилучший результат, которым он будет доволен в полной мере. Достигать поставленной цели специалистам нашей
+                компании помогает современное профессиональное оборудование, а также их внушительный стаж работы по этому
+                направлению.
+            </p>
+            <p class="shop_bottom_text">
+                Свыше десяти лет нашим сервисным центром проводится высококвалифицированная заточка пил, инструмента,
+                строгальных ножей и пильных дисков. Затачивая цепи для бензиновых и электрических пил, а также любой другой
+                инструмент, мы стараемся максимально продлить ресурс его службы. Секрет наших мастеров кроется в умении
+                снимать при заточке минимальное количество металла – так инструмент дольше не истачивается, а максимальная
+                его острота и эстетичность достигаются в процессе финальной полировки.
+            </p>
+            <p class="shop_bottom_text">
+                В процессе выполнения вашего заказа мы учтем все ваши пожелания и специфику дальнейшего использования
+                инструмента, который передадим вам в руки в полностью готовом к работе состоянии.
+            </p>
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,16 @@
+services:
+  app.menu_builder:
+    class: Binser\InstrumentBundle\Menu\MenuBuilder
+    arguments: ["@knp_menu.factory", @doctrine.orm.entity_manager]
+
+  app.main_menu:
+    class: Knp\Menu\MenuItem
+    factory: ["@app.menu_builder", createMainMenu]
+    tags:
+      - { name: knp_menu.menu, alias: main }
+
+  admin.post:
+    class: Binser\InstrumentBundle\Admin\PostAdmin
+    arguments: [~, Binser\InstrumentBundle\Entity\Post, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Статейник, label: Посты }

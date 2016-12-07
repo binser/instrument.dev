@@ -1,0 +1,48 @@
+.icon-facebook {
+  background-image: url(/bundles/binserinstrument/images/social_sprite.png);
+  background-position: 0 0;
+  width: 37px;
+  height: 37px;
+}
+.icon-facebook_hover {
+  background-image: url(/bundles/binserinstrument/images/social_sprite.png);
+  background-position: -37px 0;
+  width: 37px;
+  height: 37px;
+}
+.icon-instagramm {
+  background-image: url(/bundles/binserinstrument/images/social_sprite.png);
+  background-position: 0 -37px;
+  width: 37px;
+  height: 37px;
+}
+.icon-instagramm_hover {
+  background-image: url(/bundles/binserinstrument/images/social_sprite.png);
+  background-position: -37px -37px;
+  width: 37px;
+  height: 37px;
+}
+.icon-vk {
+  background-image: url(/bundles/binserinstrument/images/social_sprite.png);
+  background-position: -74px 0;
+  width: 37px;
+  height: 37px;
+}
+.icon-vk_hover {
+  background-image: url(/bundles/binserinstrument/images/social_sprite.png);
+  background-position: -74px -37px;
+  width: 37px;
+  height: 37px;
+}
+.icon-youtube {
+  background-image: url(/bundles/binserinstrument/images/social_sprite.png);
+  background-position: 0 -74px;
+  width: 37px;
+  height: 37px;
+}
+.icon-youtube_hover {
+  background-image: url(/bundles/binserinstrument/images/social_sprite.png);
+  background-position: -37px -74px;
+  width: 37px;
+  height: 37px;
+}

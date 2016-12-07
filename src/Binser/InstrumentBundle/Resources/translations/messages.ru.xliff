@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="ru" datatype="plaintext" original="">
+        <body>
+            <trans-unit id="Dashboard">
+                <source>Dashboard</source>
+                <target>Главная</target>
+            </trans-unit>
+            <trans-unit id="Post List">
+                <source>Post List</source>
+                <target>Список постов</target>
+            </trans-unit>
+            <trans-unit id="Video Report List">
+                <source>Video Report List</source>
+                <target>Список видео отчетов</target>
+            </trans-unit>
+            <trans-unit id="Photo Report List">
+                <source>Photo Report List</source>
+                <target>Список фото отчетов</target>
+            </trans-unit>
+            <trans-unit id="News List">
+                <source>News List</source>
+                <target>Список новостей</target>
+            </trans-unit>
+            <trans-unit id="Category List">
+                <source>Category List</source>
+                <target>Список категорий меню</target>
+            </trans-unit>
+            <trans-unit id="Product List">
+                <source>Product List</source>
+                <target>Список продуктов меню</target>
+            </trans-unit>
+            <trans-unit id="Shop Category List">
+                <source>Shop Category List</source>
+                <target>Список категорий магазина</target>
+            </trans-unit>
+            <trans-unit id="Shop Product List">
+                <source>Shop Product List</source>
+                <target>Список продуктов магазина</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

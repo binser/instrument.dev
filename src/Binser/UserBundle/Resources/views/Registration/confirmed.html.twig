@@ -1,0 +1,7 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <div class="alert alert-success big_alert" role="alert">
+        Поздравляем <b>{{ user.username }}</b>, ваш аккаунт подтвержден.
+    </div>
+{% endblock fos_user_content %}

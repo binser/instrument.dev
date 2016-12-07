@@ -1,0 +1,15 @@
+services:
+  app.user_menu_builder:
+    class: Binser\UserBundle\Menu\MenuBuilder
+    arguments: ["@knp_menu.factory", @doctrine.orm.entity_manager]
+
+  app.user_menu:
+    class: Knp\Menu\MenuItem
+    factory: ["@app.user_menu_builder", createUserMenu]
+    tags:
+      - { name: knp_menu.menu, alias: user }
+
+  app.form.profile:
+    class: Binser\UserBundle\Form\Type\ProfileFormType
+    tags:
+        - { name: form.type, alias: fos_user_profile_form }

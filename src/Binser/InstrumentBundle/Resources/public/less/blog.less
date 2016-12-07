@@ -1,0 +1,50 @@
+@yellow: #fbcb00;
+@black: #121212;
+
+#blog_block {
+  padding: 20px 0;
+  .post_row {
+    margin: 10px 0;
+    box-sizing: border-box;
+    color: @black;
+    background: url(/bundles/binserinstrument/images/left-corner.png) no-repeat 0 0,
+    url(/bundles/binserinstrument/images/right-corner.png) no-repeat 100% 100%;
+    .col-sm-4 {
+      padding: 30px !important;
+      .post_image {
+        width: 90%;
+      }
+    }
+    .col-sm-8 {
+      padding: 30px !important;
+      .post_title, .post_date {
+        font-size: 22px;
+      }
+      .post_anons {
+        margin-top: 20px;
+        font-size: 20px;
+      }
+      .my_btn {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+#blog_post_block {
+  color: @black;
+  .post_image {
+    width: 100%;
+  }
+  .post_title {
+    font-size: 28px;
+    margin-top: 100px;
+  }
+  .post_date {
+    font-size: 28px;
+  }
+  .post_text {
+    font-size: 18px;
+    margin-top: 15px;
+  }
+}

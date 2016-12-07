@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    <div class="container" id="blog_block">
+        {% for post in posts %}
+            <div class="row post_row">
+                <div class="col-sm-4">
+                    {% thumbnail post.image, 'medium' with {'class': 'post_image'} %}
+                </div>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-xs-8 post_title">
+                            {{ post.title }}
+                        </div>
+                        <div class="col-xs-4 post_date text-right">
+                            {{ post.dateCreate|date('Y-m-d') }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 post_anons">
+                            {{ post.anons }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <a href="{{ path('binser_instrument_blog_post', {'link': post.id}) }}" class="btn my_btn">
+                                ПОДРОБНЕЕ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

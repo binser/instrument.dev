@@ -1,0 +1,10 @@
+{% extends 'BinserUserBundle::base.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="alert alert-success big_alert" role="alert">
+        Письмо на адрес <b>{{ email }}</b> уже отправлено.<br>
+        Оно содержит ссылку, при переходе по которой ваш пароль будет сброшен.
+    </div>
+{% endblock %}

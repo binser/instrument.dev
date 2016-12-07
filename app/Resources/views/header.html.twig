@@ -1,0 +1,71 @@
+<div class="container-fluid" id="header">
+    <div class="container">
+        <div class="row">
+            <header>
+                <div class="col-lg-3" id="logo_block">
+                    <a href="{{ path('binser_instrument_homepage') }}">
+                        <img src="{{ asset('bundles/binserinstrument/images/logo.png') }}" alt="Логотип компании">
+                    </a>
+                </div>
+                <div class="col-lg-9" id="info_header_block">
+                    <div class="col-sm-3 info_block">
+                        <div class="col-sm-2 col-xs-5 img">
+                            <img src="{{ asset('bundles/binserinstrument/images/regime.png') }}" alt="Часы">
+                        </div>
+                        <div class="col-sm-10 col-xs-7 text">
+                            <p class="header_info_block">
+                                Режим работы:
+                            </p>
+                            ежедневно с 8.00 до 21.00<br>
+                            прием заявок круглосуточно
+                        </div>
+                    </div>
+                    <div class="col-sm-3 info_block">
+                        <div class="col-sm-2 col-xs-5 img">
+                            <img src="{{ asset('bundles/binserinstrument/images/call.png') }}" alt="Телефон">
+                        </div>
+                        <div class="col-sm-10 col-xs-7 text">
+                            <p class="header_info_block">
+                                Позвоните нам:
+                            </p>
+                            <span class="our_phone">+7 (499) 552 35 65</span><br>
+                            <span class="our_phone">+7 (499) 653 35 88</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" id="call_block">
+                        <span class="tel">+7 930 726 39 34</span>
+                        <br>
+                        <button class="header_button">Обратный звонок</button>
+                        <br>
+                        <a href="#" class="social_icon icon-vk"></a>
+                        <a href="#" class="social_icon icon-facebook"></a>
+                        <a href="#" class="social_icon icon-instagramm"></a>
+                        <a href="#" class="social_icon icon-youtube"></a>
+                    </div>
+                    <div class="col-sm-3" id="login_block">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <a href="{{ path('fos_user_profile_show') }}">
+                                {{  app.user.username|upper }}
+                            </a> |
+                            <a href="{{ path('fos_user_security_logout') }}" class="logout">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle')|upper }}
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </a>
+                        {% else %}
+                            <form method="post" action="{{ path("fos_user_security_check") }}">
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                <input type="text" class="header_login_input" name="_username" placeholder="ЛОГИН">
+                                <br>
+                                <input type="text" class="header_login_input" name="_password" placeholder="ПАРОЛЬ">
+                                <br>
+                                <button type="submit" class="header_button">Вход</button>
+                                <br>
+                            </form>
+                            <a href="{{ path('fos_user_registration_register') }}" class="reg_link">Зарегистрироваться</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+</div>

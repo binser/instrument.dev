@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="container" id="blog_post_block">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            {% thumbnail post.image, 'medium' with {'class': 'post_image'} %}
+        </div>
+        <div class="col-md-6 text-right">
+            <h1 class="post_title">{{ post.title }}</h1>
+
+            <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+            <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+            <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter" data-counter=""></div>
+
+            <p class="post_date">{{ post.dateCreate|date("d.m.Y") }}</p>
+        </div>
+    </div>
+    <div class="row post_text">
+        <div class="col-xs-12">
+            {{ post.text|raw }}
+        </div>
+    </div>
+
+{#
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="post_image">
+                {% thumbnail post.image, 'medium' with {'class': 'post_image'} %}
+            </div>
+        </div>
+    </div>
+#}
+</div>
+{% endblock %}

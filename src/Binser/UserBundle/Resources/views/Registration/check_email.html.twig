@@ -1,0 +1,9 @@
+{% extends "BinserUserBundle::base.html.twig" %}
+
+{% block fos_user_content %}
+    <div class="alert alert-info big_alert" role="alert">
+        Письмо отправлено на адрес <b>{{ user.email }}</b>.<br>
+        В нём содержится ссылка, по которой вы можете подтвердить свою регистрацию.<br>
+        До подтверждения регистрации вход в кабинет невозможен.
+    </div>
+{% endblock fos_user_content %}

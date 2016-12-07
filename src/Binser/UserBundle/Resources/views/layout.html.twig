@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/binseruser/css/user.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container cabinet_container">
+        <div class="col-xs-3 menu_block">
+            {{ knp_menu_render('user', {'currentClass': 'active', 'template': 'BinserInstrumentBundle:Menu:knp_menu.html.twig'}) }}
+        </div>
+        <div class="col-xs-9">
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </div>
+{% endblock %}

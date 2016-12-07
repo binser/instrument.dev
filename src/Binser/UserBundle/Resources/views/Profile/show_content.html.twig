@@ -1,0 +1,81 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show container">
+    <div class="row">
+        <div class="col-sm-3 text-right">
+            <span class="text-info">Логин:</span>
+        </div>
+        <div class="col-sm-4">
+            <span class="text-success">{{ user.username }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 text-right">
+            <span class="text-info">E-mail:</span>
+        </div>
+        <div class="col-sm-4">
+            <span class="text-success">{{ user.email }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 text-right">
+            <span class="text-info">Телефон:</span>
+        </div>
+        <div class="col-sm-4">
+            {% if user.phone %}
+                <span class="text-success">{{ user.phone }}</span>
+            {% else %}
+                <span class="text-danger">Не указано</span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 text-right">
+            <span class="text-info">Дата рождения:</span>
+        </div>
+        <div class="col-sm-4">
+            {% if user.dateOfBirth %}
+                <span class="text-success">{{ user.dateOfBirth|date('Y-m-d') }}</span>
+            {% else %}
+                <span class="text-danger">Не указано</span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 text-right">
+            <span class="text-info">Имя:</span>
+        </div>
+        <div class="col-sm-4">
+            {% if user.firstname %}
+                <span class="text-success">{{ user.firstname }}</span>
+            {% else %}
+                <span class="text-danger">Не указано</span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 text-right">
+            <span class="text-info">Фамилия:</span>
+        </div>
+        <div class="col-sm-4">
+            {% if user.lastname %}
+                <span class="text-success">{{ user.lastname }}</span>
+            {% else %}
+                <span class="text-danger">Не указано</span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-4">
+            <br>
+            <p>
+                <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary my_btn">Редактировать</a>
+            </p>
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
+                <a href="#" class="btn btn-primary my_btn">
+                    Панель администратора
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
