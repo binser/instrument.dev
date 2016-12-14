@@ -36,6 +36,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - 'SonataMediaBundle:Form:media_widgets.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -118,6 +121,12 @@ sonata_media:
                 - sonata.media.provider.image
             formats:
                 medium: { width: 500 , quality: 80}
+        product:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                medium: { width: 400 , quality: 80}
+                big:   { width: 800 , quality: 80}
 
     cdn:
         server:

@@ -27,9 +27,9 @@ class ProductAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', null, array('label' => 'Название'))
-            ->add('price', null, array('label' => 'Цена, РУБ'))
-            ->add('category', 'sonata_type_model', array('label' => 'Категория'))
+            ->add('title', null, array('label' => 'Название', 'required' => true))
+            ->add('price', null, array('label' => 'Цена, РУБ', 'required' => true))
+            ->add('category', 'sonata_type_model', array('label' => 'Категория', 'required' => true))
             ->add('subCategory', 'sonata_type_model', array('label' => 'Подкатегория'))
             ->add('description', 'ckeditor', array(
                     'label' => 'Описание товара',
@@ -50,10 +50,10 @@ class ProductAdmin extends Admin
             ->add('mainImage', 'sonata_media_type', array(
                 'label' => 'Главние фото',
                 'provider' => 'sonata.media.provider.image',
-                'context'  => 'post',
-                'required' => true
+                'context'  => 'product',
+                'required' => false
             ))
-            ->add('images', 'sonata_type_model_list', array('label' => 'Фотограффии'), array('link_parameters' => array('context' => 'photo_report'), 'list' => false));
+            ->add('images', 'sonata_type_model_list', array('label' => 'Фотограффии'), array('link_parameters' => array('context' => 'product'), 'list' => false));
     }
 
     /**
@@ -67,6 +67,6 @@ class ProductAdmin extends Admin
         $listMapper
             ->addIdentifier('title', null, array('label' => 'Название'))
             ->add('price', null, array('label' => 'Цена'))
-            ->add('image', 'string', array('template' => 'SonataMediaBundle:MediaAdmin:list_image.html.twig'));
+            ->add('mainImage', 'string', array('template' => 'SonataMediaBundle:MediaAdmin:list_image.html.twig'));
     }
 }

@@ -24,7 +24,6 @@ class MenuBuilder
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttributes(array('class' => 'nav navbar-nav'));
 
-        //$menu->addChild('Главная', array('route' => 'hookah_main_page'));
         $menu->addChild('О нас', array('uri' => '#', 'attributes' => array('class' => 'nav-item')));
         $menu->addChild('Наши услуги', array('uri' => '#', 'attributes' => array('class' => 'nav-item dropdown')));
         $menu['Наши услуги']->setChildrenAttributes(array('class' => 'dropdown-menu'));
@@ -38,5 +37,34 @@ class MenuBuilder
         $menu->addChild('Контакты', array('uri' => '#', 'attributes' => array('class' => 'nav-item')));
 
         return $menu;
+    }
+
+    public function createShopMenu()
+    {
+        $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttributes(array('class' => 'nav navbar-nav'));
+
+        $categories = $this->em->getRepository('BinserInstrumentBundle:Category')->findBy(array('enabled' => 1));
+        foreach($categories as $category) {
+            $parent = $menu->addChild($category->getName(),
+                array(
+                    'route' => 'hookah_shop',
+                    'routeParameters' => array('categoryUrl' => $category->getUrl())
+                )
+            );
+            $children = $category->getChildren();
+            if (!$children->isEmpty()) {
+                $parent->setAttribute('class', 'dropdown');
+                $parent->setChildrenAttributes(array('class' => 'dropdown-menu'));
+                foreach($children as $child) {
+                    $parent->addChild($child->getName(),
+                        array(
+                            'route' => 'hookah_shop',
+                            'routeParameters' => array('categoryUrl' => $child->getUrl())
+                        )
+                    );
+                }
+            }
+        }
     }
 }
