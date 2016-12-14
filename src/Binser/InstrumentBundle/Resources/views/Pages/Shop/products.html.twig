@@ -1,0 +1,33 @@
+{% extends '@BinserInstrument/Pages/Shop/base.html.twig' %}
+
+{% block shop_content %}
+    <div class="container" id="shop_products">
+        <div class="row">
+            <div class="col-sm-3">
+                {{ knp_menu_render('shop', {'currentClass': 'active'}) }}
+            </div>
+            <div class="col-sm-9">
+                {% if products %}
+                    <div class="row products masonry text-center" data-columns>
+                        {% for product in products %}
+                            <div class="masonry_thumb">
+                                {{ product.title }}
+                                {{ product.price }}
+                                {% thumbnail product.mainImage, 'medium' with {'class': 'product_image'} %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning">
+                        Продуктов не найдено
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('lib/salvatore.min.js') }}"></script>
+{% endblock %}

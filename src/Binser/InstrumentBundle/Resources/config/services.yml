@@ -9,6 +9,12 @@ services:
     tags:
       - { name: knp_menu.menu, alias: main }
 
+  app.shop_menu:
+    class: Knp\Menu\MenuItem
+    factory: ["@app.menu_builder", createShopMenu]
+    tags:
+      - { name: knp_menu.menu, alias: shop }
+
   admin.post:
     class: Binser\InstrumentBundle\Admin\PostAdmin
     arguments: [~, Binser\InstrumentBundle\Entity\Post, ~]

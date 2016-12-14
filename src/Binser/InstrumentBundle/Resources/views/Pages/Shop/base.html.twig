@@ -58,3 +58,17 @@
         </div>
     {% endblock %}
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#search_button').click(function() {
+                var searchString = $('#search_input').val();
+                if (searchString) {
+                    document.location.href = '/shop/search/' + encodeURIComponent(searchString);
+                }
+            });
+        });
+    </script>
+{% endblock %}

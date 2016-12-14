@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Binser\InstrumentBundle\Repository\CategoryRepository")
  * @ORM\Table(name="categories")
  */
 class Category
@@ -200,7 +200,7 @@ class Category
     /**
      * Get products
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Product[]
      */
     public function getProducts()
     {

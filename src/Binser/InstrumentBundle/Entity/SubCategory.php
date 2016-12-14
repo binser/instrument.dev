@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Binser\InstrumentBundle\Repository\SubCategoryRepository")
  * @ORM\Table(name="subcategories")
  */
 class SubCategory
@@ -189,7 +189,7 @@ class SubCategory
     /**
      * Get products
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Product[]
      */
     public function getProducts()
     {

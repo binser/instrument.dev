@@ -35,7 +35,13 @@
   .col-sm-offset-15 {
     margin-left: 0 !important;
   }
+
+  .masonry[data-columns]::before {
+    content: '2 .col-sm-6';
+  }
 }
+
+
 @media screen and (min-width: 768px) and (max-width: 991px) {
   #logo_block {
     padding-bottom: 15px;
@@ -43,10 +49,26 @@
   #shop_block {
     margin-top: 60px !important;
   }
+
+  .masonry[data-columns]::before {
+    content: '2 .col-sm-6';
+  }
 }
+
+
 @media screen and  (min-width: 992px) and (max-width: 1199px) {
   #logo_block {
     padding-bottom: 15px;
   }
+
+  .masonry[data-columns]::before {
+    content: '3 .col-sm-4';
+  }
 }
-@media screen and (min-width: 1200px) {}
+
+
+@media screen and (min-width: 1200px) {
+  .masonry[data-columns]::before {
+    content: '3 .col-sm-4';
+  }
+}
