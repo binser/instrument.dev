@@ -61,6 +61,44 @@
   }
 }
 
+#shop_menu {
+  margin: 0;
+  padding: 15px 10px;
+  > ul {
+    list-style: none;
+    li {
+      text-indent: 18px;
+      &.switch {
+        background: url("/bundles/binserinstrument/images/collaps_in_shop_menu.png") no-repeat left 3px;
+        &.collapsed {
+          background-image: url("/bundles/binserinstrument/images/collapsed_shop_menu.png");
+        }
+      }
+      &.active {
+      }
+      a {
+        color: @black;
+        font-size: 18px;
+      }
+      ul {
+        list-style: none;
+        li {
+          background: url("/bundles/binserinstrument/images/yellow_point.png") no-repeat left 7px;
+          text-indent: 0;
+          padding: 0 12px;
+          &.active {
+            background-color: @yellow;
+          }
+          a {
+            color: @black;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
 #shop_categories {
   padding: 20px 0;
   .category_text {
@@ -102,6 +140,60 @@
         vertical-align: middle;
         max-width: 183px;
         max-height: 184px;
+      }
+    }
+  }
+}
+
+#shop_products {
+  padding: 15px 0;
+  .masonry_thumb {
+    .product_title a {
+      color: @black;
+      font-size: 22px;
+    }
+    .img_block {
+      margin-top: 10px;
+      position: relative;
+      img {
+        display: inline-block;
+        width: 100% !important;
+        border-radius: 3px;
+        border: 5px solid @yellow;
+      }
+      .price_block {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        padding: 5px 10px;
+        font-size: 20px;
+        background-color: @yellow;
+        border-radius: 5px;
+      }
+    }
+    .row {
+      margin-top: 10px;
+      .add_to_basket {
+        text-transform: uppercase;
+        font-size: 20px;
+        width: 100%;
+        height: 40px;
+        line-height: 30px;
+        border-radius: 3px;
+        border: 5px solid @yellow;
+        cursor: pointer;
+        &:hover {
+          background-color: @yellow;
+        }
+      }
+      .change_basket_count_block {
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 20px;
+        .increment, .decrement {
+          cursor: pointer;
+        }
       }
     }
   }

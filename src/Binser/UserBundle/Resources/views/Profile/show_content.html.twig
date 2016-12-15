@@ -72,7 +72,7 @@
                 <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary my_btn">Редактировать</a>
             </p>
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
-                <a href="#" class="btn btn-primary my_btn">
+                <a href="{{ path('sonata_admin_dashboard') }}" class="btn btn-primary my_btn">
                     Панель администратора
                 </a>
             {% endif %}

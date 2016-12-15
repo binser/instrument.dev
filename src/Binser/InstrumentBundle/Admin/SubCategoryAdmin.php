@@ -41,5 +41,6 @@ class SubCategoryAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('name', null, array('label' => 'Имя'));
+        $listMapper->addIdentifier('url', null, array('label' => 'Ссылка'));
     }
 }

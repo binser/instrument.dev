@@ -2,6 +2,7 @@
 
 namespace Binser\InstrumentBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -47,6 +48,15 @@ class SubCategory
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+        $this->enabled = true;
     }
 
     /**
@@ -153,13 +163,6 @@ class SubCategory
     public function getCategory()
     {
         return $this->category;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

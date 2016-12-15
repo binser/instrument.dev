@@ -44,7 +44,7 @@ class MenuBuilder
         $menu = $this->factory->createItem('root');
         //$menu->setChildrenAttributes(array('class' => 'nav navbar-nav'));
 
-        $categories = $this->em->getRepository('BinserInstrumentBundle:Category')->findBy(array('enabled' => 1));
+        $categories = $this->em->getRepository('BinserInstrumentBundle:Category')->findBy(array('enabled' => true));
         foreach($categories as $category) {
             $parent = $menu->addChild($category->getName(),
                 array(
@@ -55,7 +55,7 @@ class MenuBuilder
             $subcategories = $category->getSubCategories();
             if (!$subcategories->isEmpty()) {
                 $parent->setAttributes(array(
-                    'class' => 'switch',
+                    'class' => 'switch collapsed',
                     'data-toggle' => 'collapse',
                     'data-target' => "#subcategories_{$category->getId()}"
                 ));

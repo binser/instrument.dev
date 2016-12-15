@@ -1,19 +1,41 @@
 {% extends '@BinserInstrument/Pages/Shop/base.html.twig' %}
 
 {% block shop_content %}
-    <div class="container" id="shop_products">
+    <div class="container">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-3" id="shop_menu">
                 {{ knp_menu_render('shop', {'currentClass': 'active'}) }}
             </div>
-            <div class="col-sm-9">
-                {% if products %}
+            <div class="col-sm-9" id="shop_products">
+                {% if products is not empty %}
                     <div class="row products masonry text-center" data-columns>
                         {% for product in products %}
                             <div class="masonry_thumb">
-                                {{ product.title }}
-                                {{ product.price }}
-                                {% thumbnail product.mainImage, 'medium' with {'class': 'product_image'} %}
+                                <div class="product_title">
+                                    <a href="{{ path('binser_instrument_shop_product', {'productId': product.id}) }}">
+                                        {{ product.title }}
+                                    </a>
+                                </div>
+                                <div class="img_block">
+                                    {% thumbnail product.mainImage, 'medium' with {'class': 'product_image'} %}
+                                    <div class="price_block">
+                                        {{ product.price }} руб.
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <div class="add_to_basket">
+                                            В КОРЗИНУ
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="change_basket_count_block">
+                                            <span class="decrement">-</span>&nbsp;
+                                            <span class="product_count_to_add">1</span>&nbsp;
+                                            <span class="increment">+</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
@@ -30,4 +52,15 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('lib/salvatore.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var $activeMenu = $('#shop_menu li.active');
+            if ($activeMenu.hasClass('switch')) {
+                $activeMenu.removeClass('collapsed').find('ul').addClass('in');
+            } else {
+                $activeMenu.closest('ul').addClass('in');
+                $activeMenu.closest('switch').removeClass('collapsed');
+            }
+        });
+    </script>
 {% endblock %}

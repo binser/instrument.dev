@@ -55,6 +55,7 @@ class Category
     public function __construct()
     {
         $this->subCategories = new ArrayCollection();
+        $this->enabled = true;
     }
 
     /**
