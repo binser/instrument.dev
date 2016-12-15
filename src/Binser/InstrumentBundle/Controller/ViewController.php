@@ -4,6 +4,7 @@ namespace Binser\InstrumentBundle\Controller;
 
 use Intervention\Image\Exception\NotFoundException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class ViewController extends Controller
 {
@@ -34,11 +35,17 @@ class ViewController extends Controller
         ));
     }
 
-    public function blogAction()
+    public function blogAction(Request $request)
     {
         $posts = $this->getDoctrine()->getRepository('BinserInstrumentBundle:Post')->getEnabledPosts();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $posts,
+            $request->query->getInt('page', 1)/*page number*/,
+            5/*limit per page*/
+        );
         return $this->render('BinserInstrumentBundle:Pages:blog.html.twig', array(
-            'posts' => $posts
+            'pagination' => $pagination
         ));
     }
 

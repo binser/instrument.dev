@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="container" id="blog_block">
-        {% for post in posts %}
+        {% for post in pagination  %}
             <div class="row post_row">
                 <div class="col-sm-4">
                     {% thumbnail post.image, 'medium' with {'class': 'post_image'} %}
@@ -31,5 +31,8 @@
                 </div>
             </div>
         {% endfor %}
+    </div>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
     </div>
 {% endblock %}

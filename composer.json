@@ -31,7 +31,8 @@
         "sonata-project/admin-bundle": "2.3.*",
         "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
         "sonata-project/media-bundle": "2.3.3",
-        "ircmaxell/password-compat": "1.0.3"
+        "ircmaxell/password-compat": "1.0.3",
+        "knplabs/knp-paginator-bundle": "2.4.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
