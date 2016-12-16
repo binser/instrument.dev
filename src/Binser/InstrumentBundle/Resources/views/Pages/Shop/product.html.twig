@@ -2,6 +2,15 @@
 
 {% block shop_content %}
 <div class="container" id="shop_product">
-
+    {{ product.title }}
+    {{ product.price }}
+    {% thumbnail product.mainImage, 'medium' with {'class': 'product_image'} %}
+    {% for photo in product.images %}
+        <div class="thumbnail">
+            <a href="{% path photo.media, 'big' %}" data-lightbox="galery-set">
+                {% thumbnail photo.media, 'medium' with {'class': 'thumb_image'} %}
+            </a>
+        </div>
+    {% endfor %}
 </div>
 {% endblock %}
