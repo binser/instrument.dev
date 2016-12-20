@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="container" id="service_post_block">
+    <div class="row">
+        <div class="col-sm-9">
+            <h1 class="text-center">{{ service.title }}</h1>
+        </div>
+        <div class="col-sm-3">
+            {{ service.price }} РУБ.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            {{ service.text|raw }}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    <div class="container" id="services_block">
+        {% if services %}
+            {% for service in services %}
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <th scope="row">
+                            <a href="{{ path('binser_instrument_service_post', {'link': service.link}) }}">
+                                {{ service.title }}
+                            </a>
+                        </th>
+                        <td>
+                            {{ service.price }} РУБ.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-warning">
+                Ни одной услуги не добавлено
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,6 +1,7 @@
 <?php
 
 namespace Binser\InstrumentBundle\Repository;
+use Binser\InstrumentBundle\Entity\Product;
 
 /**
  * ProductRepository
@@ -10,11 +11,27 @@ namespace Binser\InstrumentBundle\Repository;
  */
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $searchStrings
+     * @return Product[]
+     */
     public function findProductsByString($searchStrings)
     {
         $qb = $this->createQueryBuilder('p');
         return $qb->where($qb->expr()->like('LOWER(p.title)', '?1'))
             ->setParameter('1', '%' . mb_strtolower($searchStrings, 'UTF-8') . '%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Product[]
+     */
+    public function getThreeLastAddProducts()
+    {
+        $qb = $this->createQueryBuilder('p');
+        return $qb->orderBy('p.id', 'DESC')
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult();
     }

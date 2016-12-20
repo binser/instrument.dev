@@ -2,6 +2,30 @@ binser_instrument_homepage:
     path:     /
     defaults: { _controller: BinserInstrumentBundle:View:index }
 
+binser_instrument_about:
+    path:     /about
+    defaults: { _controller: BinserInstrumentBundle:View:about }
+
+binser_instrument_contacts:
+    path:     /contacts
+    defaults: { _controller: BinserInstrumentBundle:View:contacts }
+
+binser_instrument_examples:
+    path:     /examples
+    defaults: { _controller: BinserInstrumentBundle:View:examples }
+
+binser_instrument_education:
+    path:     /education
+    defaults: { _controller: BinserInstrumentBundle:View:education }
+
+binser_instrument_services:
+    path:     /services
+    defaults: { _controller: BinserInstrumentBundle:View:services }
+
+binser_instrument_service_post:
+    path:     /service/{link}
+    defaults: { _controller: BinserInstrumentBundle:View:servicePost }
+
 binser_instrument_blog:
     path:     /blog
     defaults: { _controller: BinserInstrumentBundle:View:blog }
@@ -10,22 +34,8 @@ binser_instrument_blog_post:
     path:     /blog/{link}
     defaults: { _controller: BinserInstrumentBundle:View:blogPost }
 
-binser_instrument_shop_index:
-    path:     /shop
-    defaults: { _controller: BinserInstrumentBundle:Shop/View:index }
 
-binser_instrument_shop_product:
-    path:     /shop/product/{productId}
-    defaults: { _controller: BinserInstrumentBundle:Shop/View:product }
 
-binser_instrument_shop_search:
-    path:     /shop/search/{searchString}
-    defaults: { _controller: BinserInstrumentBundle:Shop/View:searchProducts }
-
-binser_instrument_shop_category:
-    path:     /shop/{categoryUrl}
-    defaults: { _controller: BinserInstrumentBundle:Shop/View:categoryProducts }
-
-binser_instrument_shop_subcategory:
-    path:     /shop/{categoryUrl}/{subcategoryUrl}
-    defaults: { _controller: BinserInstrumentBundle:Shop/View:subcategoryProducts }
+binser_shop:
+    resource: "routing/shop.yml"
+    prefix:   /shop
