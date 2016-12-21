@@ -64,6 +64,12 @@ class Product extends BaseThread
      */
     protected $images;
 
+    public function __construct()
+    {
+        $this->permalink = '';
+        $this->isCommentable = true;
+    }
+
     /**
      * Get id
      *

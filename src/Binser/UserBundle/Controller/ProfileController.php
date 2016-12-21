@@ -100,7 +100,7 @@ class ProfileController extends Controller
         $user = $this->getUser();
         $comments = $this->getDoctrine()->getRepository('BinserInstrumentBundle:Comment')->getUserComments($user);
 
-        return $this->render('UserBundle:Comments:comments.html.twig', array(
+        return $this->render('BinserUserBundle:Profile:comments.html.twig', array(
             'comments' => $comments
         ));
     }

@@ -188,13 +188,13 @@
                                 <div class="product">
                                     <div class="row info_product">
                                         <div class="col-sm-7">
-                                            {{ product.name }}
+                                            {{ product.title }}
                                         </div>
                                         <div class="col-sm-5">
                                             {{ product.price }} РУБ
                                         </div>
                                     </div>
-                                    <img src="{{ asset('bundles/binserinstrument/images/' ~ product.image) }}" alt="Фото продукта">
+                                    {% thumbnail product.mainImage, 'medium' with {'class': 'product_image'} %}
                                     <a href="#" class="product_page_link">подробнее</a>
                                 </div>
                             {% endfor %}
