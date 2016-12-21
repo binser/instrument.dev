@@ -7,9 +7,9 @@
                 {{ knp_menu_render('shop', {'currentClass': 'active'}) }}
             </div>
             <div class="col-sm-9" id="shop_products">
-                {% if products is not empty %}
+                {% if pagination.items is not empty %}
                     <div class="row products masonry text-center" data-columns>
-                        {% for product in products %}
+                        {% for product in pagination %}
                             <div class="masonry_thumb">
                                 <div class="product_title">
                                     <a href="{{ path('binser_instrument_shop_product', {'productId': product.id}) }}">
@@ -38,6 +38,9 @@
                                 </div>
                             </div>
                         {% endfor %}
+                        <div class="container text-right">
+                            {{ knp_pagination_render(pagination) }}
+                        </div>
                     </div>
                 {% else %}
                     <div class="alert alert-warning">

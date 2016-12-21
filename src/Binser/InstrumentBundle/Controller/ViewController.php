@@ -72,7 +72,7 @@ class ViewController extends Controller
     public function servicePostAction($link)
     {
         $service = $this->getDoctrine()->getRepository('BinserInstrumentBundle:Service')->getPostByUrl($link);
-        if ($service) {
+        if (!$service) {
             return new NotFoundException();
         }
 

@@ -199,6 +199,61 @@
   }
 }
 
+#shop_product {
+  padding: 15px 5px;
+  .main_image {
+    width: 95%;
+    border: 5px solid @yellow;
+    border-radius: 5px;
+  }
+  .thumb_image_block {
+    margin-top: 10px;
+    padding: 0 5px;
+    .thumb_image {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 90px;
+      border: 5px solid @yellow;
+      border-radius: 5px;
+    }
+  }
+  .product_title {
+    margin-top: 0;
+    font-size: 28px;
+    color: @black;
+  }
+  .product_price_block {
+    padding: 3px 5px;
+    border-radius: 10px;
+    background-color: @yellow;
+    font-size: 24px;
+  }
+  .add_to_basket {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: 5px solid @yellow;
+    cursor: pointer;
+    &:hover {
+      background-color: @yellow;
+      text-decoration: none;
+    }
+  }
+  .header_paragraph {
+    font-size: 20px;
+    margin-top: 15px;
+    text-transform: uppercase;
+  }
+  .text {
+    font-size: 20px;
+  }
+}
+
 #bottom_text {
   .shop_bottom_text {
     font-family: "PF DinDisplay Pro Italic", sans-serif;

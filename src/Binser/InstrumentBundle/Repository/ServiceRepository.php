@@ -17,7 +17,7 @@ class ServiceRepository extends \Doctrine\ORM\EntityRepository
      */
     public function getPostByUrl($url)
     {
-        return $this->findOneBy(['url' => $url]);
+        return $this->findOneBy(['link' => $url]);
     }
 
     /**
@@ -25,6 +25,6 @@ class ServiceRepository extends \Doctrine\ORM\EntityRepository
      */
     public function getEnabledServices()
     {
-        return $this->findOneBy(['enabled' => true]);
+        return $this->findBy(['enabled' => true]);
     }
 }

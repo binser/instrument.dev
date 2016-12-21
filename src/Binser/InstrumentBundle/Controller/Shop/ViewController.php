@@ -3,6 +3,7 @@
 namespace Binser\InstrumentBundle\Controller\Shop;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ViewController extends Controller
@@ -12,7 +13,7 @@ class ViewController extends Controller
         return $this->render('BinserInstrumentBundle:Pages/Shop:index.html.twig', array());
     }
 
-    public function categoryProductsAction($categoryUrl)
+    public function categoryProductsAction($categoryUrl, Request $request)
     {
         $category = $this->getDoctrine()
             ->getRepository('BinserInstrumentBundle:Category')
@@ -22,8 +23,14 @@ class ViewController extends Controller
         }
 
         $products = $category->getProducts();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $products,
+            $request->query->getInt('page', 1)/*page number*/,
+            9/*limit per page*/
+        );
         return $this->render('BinserInstrumentBundle:Pages/Shop:products.html.twig', array(
-            'products' => $products
+            'pagination' => $pagination
         ));
     }
 
@@ -52,8 +59,10 @@ class ViewController extends Controller
             return new NotFoundHttpException();
         }
 
+        $photos = $this->getDoctrine()->getRepository("ApplicationSonataMediaBundle:GalleryHasMedia")->findBy(array('gallery' => $product->getImages()));
         return $this->render('BinserInstrumentBundle:Pages/Shop:product.html.twig', array(
-            'product' => $product
+            'product' => $product,
+            'photos' => $photos
         ));
 
 
