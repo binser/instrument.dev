@@ -94,4 +94,14 @@ class ProfileController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    public function userCommentsAction()
+    {
+        $user = $this->getUser();
+        $comments = $this->getDoctrine()->getRepository('BinserInstrumentBundle:Comment')->getUserComments($user);
+
+        return $this->render('UserBundle:Comments:comments.html.twig', array(
+            'comments' => $comments
+        ));
+    }
 }

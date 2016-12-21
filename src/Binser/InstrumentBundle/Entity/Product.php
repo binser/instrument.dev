@@ -4,12 +4,14 @@ namespace Binser\InstrumentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use FOS\CommentBundle\Entity\Thread as BaseThread;
 
 /**
  * @ORM\Entity(repositoryClass="Binser\InstrumentBundle\Repository\ProductRepository")
  * @ORM\Table(name="products")
+ * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Product
+class Product extends BaseThread
 {
     /**
      * @ORM\Column(type="integer")

@@ -1,0 +1,31 @@
+fos_comment_comment_new_headline_first:       Оставьте первый отзыв
+fos_comment_comment_new_headline:             Добавить новый отзыв
+fos_comment_comment_new_submit:               Добавить отзыв
+fos_comment_comment_new_cancel:               Отмена
+
+fos_comment_comment_edit_submit:              Сохранить
+fos_comment_comment_edit_cancel:              Отмена
+
+fos_comment_comment_reply_reply_to:           Ответ на %name%
+fos_comment_comment_reply_cancel:             Отмена
+
+fos_comment_comment_show_by:                  Отзыв от
+fos_comment_comment_show_voteup:              Голосовать за
+fos_comment_comment_show_votedown:            Голосовать против
+fos_comment_comment_show_reply:               Ответить
+
+fos_comment_comment_vote_score:               "Голоса: "
+
+fos_comment_comment_tree_load_more:           Показать остальные ответы
+
+Showing %num% comment|Showing %num% comments: Показан %num% отзыв|Показано %num% отзыва|Показано %num% отзывов
+
+fos_comment_rss_feed:                         Лента RSS
+
+fos_comment_thread_close:                     Запретить комментирование
+fos_comment_thread_open:                      Разрешить комментирование
+fos_comment_thread_comment_count:             %count% отзыв|%count% отзыва|%count% отзывов
+fos_comment_comment_delete:                   Удалить отзыв
+fos_comment_comment_undelete:                 Восстановить отзыв
+fos_comment_comment_edit:                     Изменить отзыв
+fos_comment_comment_deleted:                  "[удалено]"

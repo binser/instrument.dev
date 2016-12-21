@@ -50,6 +50,15 @@
                         {{ product.description|raw }}
                     </p>
                 </div>
+                <div class="col-xs-12">
+                    {% if not is_granted('ROLE_USER') %}
+                        <div class="alert alert-info">
+                            Для того чтобы оставить комментарий вы должны <a href="{{ path('fos_user_security_login') }}" class="text-success">залогиниться</a>.<br>
+                            Если у ват нет учетной записи на нашем сайте <a href="{{ path('fos_user_registration_register') }}" class="text-success">пройдите регистрацию</a>.
+                        </div>
+                    {% endif %}
+                    {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': product.id} %}
+                </div>
             </div>
         </div>
     </div>

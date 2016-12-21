@@ -33,6 +33,8 @@ class AppKernel extends Kernel
             new FM\ElfinderBundle\FMElfinderBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
 
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 

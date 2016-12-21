@@ -24,7 +24,8 @@ class MenuBuilder
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttributes(array('class' => 'list-group'));
 
-        $menu->addChild('Мои данные', array('route' => 'fos_user_profile_show',  'attributes' => array('class' => 'list-group-item')));
+        $menu->addChild('Мои данные', array('route' => 'user_profile_comments',  'attributes' => array('class' => 'list-group-item')));
+        $menu->addChild('Мои комментарии', array('route' => 'fos_user_profile_show',  'attributes' => array('class' => 'list-group-item')));
         $menu->addChild('Сменить пароль', array('route' => 'fos_user_change_password', 'attributes' => array('class' => 'list-group-item')));
 
         return $menu;

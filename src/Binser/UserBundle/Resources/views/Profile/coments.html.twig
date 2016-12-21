@@ -1,0 +1,20 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    {% set depth = depth|default(0) %}
+    {% set view = view|default('tree') %}
+    <div id="fos_comment_thread"></div>
+    {% if comments %}
+        {% for comment in comments %}
+            {% include "FOSCommentBundle:Thread:comment.html.twig" with { "comment": comment, "depth": depth, "view": view } %}
+            <hr>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info">Вы еще не оставили ни одного отзыва.</div>
+    {% endif %}
+{% endblock fos_user_content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/foscomment/js/comments.js') }}"></script>
+{% endblock %}

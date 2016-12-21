@@ -1,1 +1,3 @@
-
+user_profile_comments:
+    path:     /profile/comments
+    defaults: { _controller: BinserUserBundle:Profile:userComments }

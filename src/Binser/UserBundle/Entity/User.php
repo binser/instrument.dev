@@ -55,6 +55,11 @@ class User extends BaseUser
     protected $lastname;
 
     /**
+     * @ORM\OneToMany(targetEntity="Binser\InstrumentBundle\Entity\Comment", mappedBy="author", cascade={"remove"})
+     */
+    protected $comments;
+
+    /**
      * Constructs
      */
     public function __construct()
@@ -63,6 +68,7 @@ class User extends BaseUser
 
         $this->createdAt = new \DateTime;
         $this->updatedAt = new \DateTime;
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -224,5 +230,39 @@ class User extends BaseUser
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \Binser\InstrumentBundle\Entity\Comment $comment
+     *
+     * @return User
+     */
+    public function addComment(\Binser\InstrumentBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \Binser\InstrumentBundle\Entity\Comment $comment
+     */
+    public function removeComment(\Binser\InstrumentBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
