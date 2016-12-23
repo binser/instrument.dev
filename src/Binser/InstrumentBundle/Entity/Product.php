@@ -8,7 +8,7 @@ use FOS\CommentBundle\Entity\Thread as BaseThread;
 
 /**
  * @ORM\Entity(repositoryClass="Binser\InstrumentBundle\Repository\ProductRepository")
- * @ORM\Table(name="products")
+ * @ORM\Table(name="shop_products")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
 class Product extends BaseThread

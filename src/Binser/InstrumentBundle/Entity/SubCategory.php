@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Binser\InstrumentBundle\Repository\SubCategoryRepository")
- * @ORM\Table(name="subcategories")
+ * @ORM\Table(name="shop_subcategories")
  */
 class SubCategory
 {

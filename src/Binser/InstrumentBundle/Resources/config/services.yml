@@ -44,3 +44,10 @@ services:
     arguments: [~, Binser\InstrumentBundle\Entity\Product, ~]
     tags:
       - { name: sonata.admin, manager_type: orm,  group: Интернет магазин, label: Продукты }
+
+
+  shop.form.order:
+      class: Binser\InstrumentBundle\Form\OrderType
+      arguments: [@session, @security.context]
+      tags:
+          - { name: form.type, alias: shop_order }
