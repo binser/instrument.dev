@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="namespace Binser\InstrumentBundle\Repository\OrderRepository")
+ * @ORM\Entity(repositoryClass="Binser\InstrumentBundle\Repository\OrderRepository")
  * @ORM\Table(name="shop_orders")
  */
 class Order
@@ -91,7 +91,7 @@ class Order
 
     /**
      * Сущность адреса
-     * @ORM\OneToOne(targetEntity="ShopBundle\Entity\AddressOrder", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Binser\InstrumentBundle\Entity\AddressOrder", cascade={"persist"})
      * @ORM\JoinColumn(name="address_id", referencedColumnName="id", nullable=true)
      */
     protected $address;
@@ -122,7 +122,7 @@ class Order
     protected $status;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="orders")
+     * @ORM\ManyToOne(targetEntity="Binser\UserBundle\Entity\User", inversedBy="orders")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
     protected $user;
@@ -237,6 +237,30 @@ class Order
     }
 
     /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Order
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
      * Set wishes
      *
      * @param string $wishes
@@ -282,6 +306,54 @@ class Order
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * Set deliveryType
+     *
+     * @param integer $deliveryType
+     *
+     * @return Order
+     */
+    public function setDeliveryType($deliveryType)
+    {
+        $this->deliveryType = $deliveryType;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveryType
+     *
+     * @return integer
+     */
+    public function getDeliveryType()
+    {
+        return $this->deliveryType;
+    }
+
+    /**
+     * Set summ
+     *
+     * @param float $summ
+     *
+     * @return Order
+     */
+    public function setSumm($summ)
+    {
+        $this->summ = $summ;
+
+        return $this;
+    }
+
+    /**
+     * Get summ
+     *
+     * @return float
+     */
+    public function getSumm()
+    {
+        return $this->summ;
     }
 
     /**
@@ -333,54 +405,6 @@ class Order
     }
 
     /**
-     * Set user
-     *
-     * @param \UserBundle\Entity\User $user
-     *
-     * @return Order
-     */
-    public function setUser(\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set summ
-     *
-     * @param float $summ
-     *
-     * @return Order
-     */
-    public function setSumm($summ)
-    {
-        $this->summ = $summ;
-
-        return $this;
-    }
-
-    /**
-     * Get summ
-     *
-     * @return float
-     */
-    public function getSumm()
-    {
-        return $this->summ;
-    }
-
-    /**
      * Set uuid
      *
      * @param string $uuid
@@ -405,128 +429,6 @@ class Order
     }
 
     /**
-     * @return array
-     */
-    public function getOrderProductsArray()
-    {
-        return $this->orderProductsArray;
-    }
-
-    /**
-     * @param array $orderProductsArray
-     */
-    public function setOrderProductsArray($orderProductsArray)
-    {
-        $this->orderProductsArray = $orderProductsArray;
-    }
-
-    public function getTextStatus()
-    {
-        return OrderStatus::getAsText($this->getStatus());
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Order
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function getDelivery()
-    {
-        return DeliveryType::getAsText($this->getDeliveryType());
-    }
-
-    /**
-     * Set deliveryType
-     *
-     * @param integer $deliveryType
-     *
-     * @return Order
-     */
-    public function setDeliveryType($deliveryType)
-    {
-        $this->deliveryType = $deliveryType;
-
-        return $this;
-    }
-
-    /**
-     * Get deliveryType
-     *
-     * @return integer
-     */
-    public function getDeliveryType()
-    {
-        return $this->deliveryType;
-    }
-
-    /**
-     * Set bonus
-     *
-     * @param string $bonus
-     *
-     * @return Order
-     */
-    public function setBonus($bonus)
-    {
-        $this->bonus = $bonus;
-
-        return $this;
-    }
-
-    /**
-     * Get bonus
-     *
-     * @return string
-     */
-    public function getBonus()
-    {
-        return $this->bonus;
-    }
-
-    /**
-     * Set address
-     *
-     * @param \ShopBundle\Entity\AddressOrder $address
-     *
-     * @return Order
-     */
-    public function setAddress(\ShopBundle\Entity\AddressOrder $address = null)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return \ShopBundle\Entity\AddressOrder
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
      * Set adminWishes
      *
      * @param string $adminWishes
@@ -548,5 +450,53 @@ class Order
     public function getAdminWishes()
     {
         return $this->adminWishes;
+    }
+
+    /**
+     * Set address
+     *
+     * @param \Binser\InstrumentBundle\Entity\AddressOrder $address
+     *
+     * @return Order
+     */
+    public function setAddress(\Binser\InstrumentBundle\Entity\AddressOrder $address = null)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return \Binser\InstrumentBundle\Entity\AddressOrder
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Binser\UserBundle\Entity\User $user
+     *
+     * @return Order
+     */
+    public function setUser(\Binser\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Binser\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

@@ -51,3 +51,9 @@ services:
       arguments: [@session, @security.context]
       tags:
           - { name: form.type, alias: shop_order }
+
+  shop.backet.extention:
+        class: Binser\InstrumentBundle\Twig\Extension\BasketExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }

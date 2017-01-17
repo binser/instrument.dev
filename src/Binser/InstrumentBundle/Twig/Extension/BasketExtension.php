@@ -1,23 +1,23 @@
 <?php
 
-namespace ShopBundle\Twig\Extension;
+namespace Binser\InstrumentBundle\Twig\Extension;
 
-use Doctrine\ORM\EntityManager;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class BasketExtension extends \Twig_Extension
 {
 
     /**
-     * @var EntityManager
+     * @var ContainerInterface
      */
-    private $em;
+    private $container;
 
     /**
-     * @param EntityManager $em
+     * @param ContainerInterface $container
      */
-    function __construct(EntityManager $em)
+    function __construct(ContainerInterface $container)
     {
-        $this->em = $em;
+        $this->container = $container;
     }
 
     public function getFunctions()
