@@ -1,0 +1,98 @@
+<div id="basket_mask">
+    <div id="basket_content">
+        <div class="step first">
+            <div class="col-sm-7" id="products_block"></div>
+            <div class="col-sm-5" id="sum_block"></div>
+        </div>
+        <div class="step second">
+            <div class="col-sm-7" id="address_block">
+                {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-lg-6">
+                        {{ form_label(form.clientFirstName) }} (<span class="text-danger">*</span>)
+                        {{ form_widget(form.clientFirstName) }}
+                        {{ form_errors(form.clientFirstName) }}
+                    </div>
+                    <div class="col-lg-6">
+                        {{ form_label(form.clientLastName) }}
+                        {{ form_widget(form.clientLastName) }}
+                        {{ form_errors(form.clientLastName) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ form_label(form.telephone) }} (<span class="text-danger">*</span>)
+                        {{ form_widget(form.telephone) }}
+                        {{ form_errors(form.telephone) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ form_label(form.email) }} (<span class="text-danger">*</span>)
+                        {{ form_widget(form.email) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+                </div>
+                <div id="form_address">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {{ form_label(form.address.region) }} (<span class="text-danger">*</span>)
+                            {{ form_widget(form.address.region) }}
+                            {{ form_errors(form.address.region) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            {{ form_label(form.address.city) }} (<span class="text-danger">*</span>)
+                            {{ form_widget(form.address.city) }}
+                            {{ form_errors(form.address.city) }}
+                        </div>
+                        <div class="col-lg-6">
+                            {{ form_label(form.address.district) }}
+                            {{ form_widget(form.address.district) }}
+                            {{ form_errors(form.address.district) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {{ form_label(form.address.street) }} (<span class="text-danger">*</span>)
+                            {{ form_widget(form.address.street) }}
+                            {{ form_errors(form.address.street) }}
+                        </div>
+                        <div class="col-sm-2">
+                            {{ form_label(form.address.house) }} (<span class="text-danger">*</span>)
+                            {{ form_widget(form.address.house) }}
+                            {{ form_errors(form.address.house) }}
+                        </div>
+                        <div class="col-sm-2">
+                            {{ form_label(form.address.flat) }}
+                            {{ form_widget(form.address.flat) }}
+                            {{ form_errors(form.address.flat) }}
+                        </div>
+                        <div class="col-sm-2">
+                            {{ form_label(form.address.enterCode) }}
+                            {{ form_widget(form.address.enterCode) }}
+                            {{ form_errors(form.address.enterCode) }}
+                        </div>
+                    </div>
+                </div>
+                <p data-toggle="collapse" data-target="#wishes_block" class="collapse_link text-right">
+                    Добавить комментарии к заказу</p>
+
+                <div class="collapse" id="wishes_block">
+                    {{ form_label(form.wishes) }}
+                    {{ form_widget(form.wishes) }}
+                    {{ form_errors(form.wishes) }}
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-right">
+                        <button type="submit" class="btn btn-primary btn-lg">Заказать</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-sm-5" id="order_block"></div>
+        </div>
+    </div>
+</div>

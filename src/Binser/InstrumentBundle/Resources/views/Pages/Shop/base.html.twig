@@ -65,6 +65,7 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/binserinstrument/js/basket.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#search_button').click(function() {

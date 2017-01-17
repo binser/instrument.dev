@@ -2,6 +2,7 @@
 
 namespace Binser\InstrumentBundle\Twig\Extension;
 
+use Binser\InstrumentBundle\Entity\Order;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class BasketExtension extends \Twig_Extension
@@ -33,8 +34,12 @@ class BasketExtension extends \Twig_Extension
      */
     public function basketBlock(\Twig_Environment $twig)
     {
-
-        return $twig->render('@BinserInstrument/Pages/Shop/basket.html.twig', array());
+        $order = new Order();
+        $orderForm = $this->container->get('shop.form.order');
+        $form = $this->container->get('form.factory')->create($order, $orderForm);
+        return $twig->render('@BinserInstrument/Pages/Shop/basket.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 
     /**
