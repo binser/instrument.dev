@@ -52,6 +52,10 @@
     </div>
 {% endblock %}
 
+{% block shop_text %}
+    {% include 'bottom_text.html.twig' %}
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('lib/salvatore.min.js') }}"></script>

@@ -26,11 +26,12 @@ class ViewController extends Controller
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $products,
-            $request->query->getInt('page', 1)/*page number*/,
-            9/*limit per page*/
+            $request->query->getInt('page', 1),
+            9
         );
         return $this->render('BinserInstrumentBundle:Pages/Shop:products.html.twig', array(
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'category' => $category
         ));
     }
 
