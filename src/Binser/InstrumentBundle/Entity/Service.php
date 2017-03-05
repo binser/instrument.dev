@@ -39,6 +39,21 @@ class Service
     protected $link;
 
     /**
+     * @ORM\Column(name="seo_title", type="string", nullable=true)
+     */
+    protected $seoTitle;
+
+    /**
+     * @ORM\Column(name="seo_description", type="text", nullable=true)
+     */
+    protected $seoDescription;
+
+    /**
+     * @ORM\Column(name="seo_keywords", type="text", nullable=true)
+     */
+    protected $seoKeywords;
+
+    /**
      * @ORM\Column(type="text")
      */
     protected $text;
@@ -181,4 +196,54 @@ class Service
     {
         return $this->enabled;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSeoTitle()
+    {
+        return $this->seoTitle;
+    }
+
+    /**
+     * @param mixed $seoTitle
+     */
+    public function setSeoTitle($seoTitle)
+    {
+        $this->seoTitle = $seoTitle;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeoDescription()
+    {
+        return $this->seoDescription;
+    }
+
+    /**
+     * @param mixed $seoDescription
+     */
+    public function setSeoDescription($seoDescription)
+    {
+        $this->seoDescription = $seoDescription;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeoKeywords()
+    {
+        return $this->seoKeywords;
+    }
+
+    /**
+     * @param mixed $seoKeywords
+     */
+    public function setSeoKeywords($seoKeywords)
+    {
+        $this->seoKeywords = $seoKeywords;
+    }
+
+
 }

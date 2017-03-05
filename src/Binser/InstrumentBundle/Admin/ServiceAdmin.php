@@ -30,6 +30,9 @@ class ServiceAdmin extends Admin
             ->add('title', null, array('label' => 'Заголовок'))
             ->add('price', null, array('label' => 'Цена, РУБ'))
             ->add('link', null, array('label' => 'Ссылка на страницу услуги', 'attr' => array('placeholder' => 'Латинские буквы и символ -')))
+            ->add('seoTitle', null, array('label' => 'Заголовок для SEO'))
+            ->add('seoDescription', null, array('label' => 'Описание для SEO'))
+            ->add('seoKeywords', null, array('label' => 'Ключевые слова для SEO'))
             ->add('text', 'ckeditor', array(
                     'label' => 'Структура страницы услуги',
                     'config' => array(

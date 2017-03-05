@@ -29,7 +29,18 @@ class SubCategoryAdmin extends Admin
         $formMapper
             ->add('name', null, array('label' => 'Имя'))
             ->add('url', null, array('label' => 'Ссылка на страницу категории', 'attr' => array('placeholder' => 'Латинские буквы и символ -')))
-            ->add('category', 'sonata_type_model', array('label' => 'Категория'));
+            ->add('category', 'sonata_type_model', array('label' => 'Категория'))
+            ->add('title', null, array('label' => 'Заголовок страницы'))
+            ->add('description', null, array('label' => 'Опиание страницы'))
+            ->add('keywords', null, array('label' => 'Ключевые слова'))
+            ->add('seoText', 'ckeditor', array(
+                    'label' => 'Текст снизу на странице',
+                    'config' => array(
+                        'filebrowserBrowseRoute' => 'elfinder',
+                        'filebrowserBrowseRouteParameters' => array('instance' => 'default')
+                    )
+                )
+            );
     }
 
     /**

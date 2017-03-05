@@ -35,6 +35,26 @@ class SubCategory
     protected $enabled;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $description;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $keywords;
+
+    /**
+     * @ORM\Column(name="seo_text", type="text", nullable=true)
+     */
+    protected $seoText;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Binser\InstrumentBundle\Entity\Category", inversedBy="subCategories")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
@@ -139,6 +159,70 @@ class SubCategory
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
+    }
+
+    /**
+     * @param mixed $keywords
+     */
+    public function setKeywords($keywords)
+    {
+        $this->keywords = $keywords;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeoText()
+    {
+        return $this->seoText;
+    }
+
+    /**
+     * @param mixed $seoText
+     */
+    public function setSeoText($seoText)
+    {
+        $this->seoText = $seoText;
     }
 
     /**

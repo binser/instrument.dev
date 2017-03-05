@@ -1,36 +1,46 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}Статьи{% endblock %}
+{% block description %}Наши статьи{% endblock %}
+{% block keywords %}{% endblock %}
+
 {% block content %}
     <div class="container" id="blog_block">
-        {% for post in pagination  %}
-            <div class="row post_row">
-                <div class="col-sm-4">
-                    {% thumbnail post.image, 'medium' with {'class': 'post_image'} %}
+        {% if pagination %}
+            {% for post in pagination  %}
+                <div class="row post_row">
+                    <div class="col-sm-4">
+                        {% thumbnail post.image, 'medium' with {'class': 'post_image'} %}
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <div class="col-xs-8 post_title">
+                                {{ post.title }}
+                            </div>
+                            <div class="col-xs-4 post_date text-right">
+                                {{ post.dateCreate|date('Y-m-d') }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 post_anons">
+                                {{ post.anons }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-right">
+                                <a href="{{ path('binser_instrument_blog_post', {'link': post.id}) }}" class="btn my_btn">
+                                    ПОДРОБНЕЕ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-8">
-                    <div class="row">
-                        <div class="col-xs-8 post_title">
-                            {{ post.title }}
-                        </div>
-                        <div class="col-xs-4 post_date text-right">
-                            {{ post.dateCreate|date('Y-m-d') }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 post_anons">
-                            {{ post.anons }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 text-right">
-                            <a href="{{ path('binser_instrument_blog_post', {'link': post.id}) }}" class="btn my_btn">
-                                ПОДРОБНЕЕ
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info">
+                Не добавлено ни одной статьи
             </div>
-        {% endfor %}
+        {% endif %}
     </div>
     <div class="container text-right">
         {{ knp_pagination_render(pagination) }}

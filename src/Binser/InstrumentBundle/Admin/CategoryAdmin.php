@@ -28,7 +28,18 @@ class CategoryAdmin extends Admin
     {
         $formMapper
             ->add('name', null, array('label' => 'Имя'))
-            ->add('url', null, array('label' => 'Ссылка на страницу категории', 'attr' => array('placeholder' => 'Латинские буквы и символ -')));
+            ->add('url', null, array('label' => 'Ссылка на страницу категории', 'attr' => array('placeholder' => 'Латинские буквы и символ -')))
+            ->add('title', null, array('label' => 'Заголовок страницы'))
+            ->add('description', null, array('label' => 'Опиание страницы'))
+            ->add('keywords', null, array('label' => 'Ключевые слова'))
+            ->add('seoText', 'ckeditor', array(
+                    'label' => 'Текст снизу на странице',
+                    'config' => array(
+                        'filebrowserBrowseRoute' => 'elfinder',
+                        'filebrowserBrowseRouteParameters' => array('instance' => 'default')
+                    )
+                )
+            );
     }
 
     /**

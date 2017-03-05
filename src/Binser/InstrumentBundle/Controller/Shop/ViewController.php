@@ -35,21 +35,29 @@ class ViewController extends Controller
         ));
     }
 
-    public function subcategoryProductsAction($categoryUrl, $subcategoryUrl)
+    public function subcategoryProductsAction($categoryUrl, $subcategoryUrl, Request $request)
     {
         $category = $this->getDoctrine()
             ->getRepository('BinserInstrumentBundle:Category')
             ->getCategoryByUrl($categoryUrl);
-        $subcategory = $this->getDoctrine()
+        $subCategory = $this->getDoctrine()
             ->getRepository('BinserInstrumentBundle:SubCategory')
             ->getCategoryByCategoryAndUrl($category, $subcategoryUrl);
-        if (!$subcategory) {
+        if (!$subCategory) {
             return new NotFoundHttpException();
         }
 
-        $products = $subcategory->getProducts();
+        $products = $subCategory->getProducts();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $products,
+            $request->query->getInt('page', 1),
+            9
+        );
         return $this->render('BinserInstrumentBundle:Pages/Shop:products.html.twig', array(
-            'products' => $products
+            'pagination' => $pagination,
+            'category' => $category,
+            'subCategory' => $subCategory
         ));
     }
 

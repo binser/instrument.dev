@@ -1,5 +1,33 @@
 {% extends '@BinserInstrument/Pages/Shop/base.html.twig' %}
 
+{% block title %}
+    {% if subCategory is defined and subCategory.title %}
+        {{ subCategory.title }}
+    {% elseif category.title %}
+        {{ category.title }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+{% block description %}
+    {% if subCategory is defined and subCategory.description %}
+        {{ subCategory.description }}
+    {% elseif category.description %}
+        {{ category.description }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+{% block keywords %}
+    {% if subCategory is defined and subCategory.keywords %}
+        {{ subCategory.keywords }}
+    {% elseif category.keywords %}
+        {{ category.keywords }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
 {% block shop_content %}
     <div class="container">
         <div class="row">
@@ -53,7 +81,13 @@
 {% endblock %}
 
 {% block shop_text %}
-    {% include 'bottom_text.html.twig' %}
+    {% if subCategory is defined and subCategory.seoText %}
+        {{ subCategory.seoText|raw }}
+    {% elseif category.seoText %}
+        {{ category.seoText|raw }}
+    {% else %}
+        {#{{ parent() }}#}
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

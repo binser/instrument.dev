@@ -1,26 +1,30 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
 {% block content %}
     <div class="container" id="services_block">
         {% if services %}
+            <table class="table table-striped">
+            <tbody>
             {% for service in services %}
-                <table class="table table-striped">
-                    <tbody>
-                    <tr>
-                        <th scope="row">
-                            <a href="{{ path('binser_instrument_service_post', {'link': service.link}) }}">
-                                {{ service.title }}
-                            </a>
-                        </th>
-                        <td>
-                            {{ service.price }} РУБ.
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <tr>
+                    <th scope="row">
+                        <a href="{{ path('binser_instrument_service_post', {'link': service.link}) }}">
+                            {{ service.title }}
+                        </a>
+                    </th>
+                    <td class="text-center">
+                        {{ service.price }} РУБ.
+                    </td>
+                </tr>
             {% endfor %}
+            </tbody>
+            </table>
         {% else %}
-            <div class="alert alert-warning">
+            <div class="alert alert-info">
                 Ни одной услуги не добавлено
             </div>
         {% endif %}

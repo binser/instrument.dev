@@ -259,11 +259,24 @@
 }
 
 #bottom_text {
-  .shop_bottom_text {
+  .shop_bottom_text, ol li, ul li {
     font-family: "PF DinDisplay Pro Italic", sans-serif;
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 22px;
+    margin: 20px 0;
+  }
+
+  button {
+    color: @black;
+    font-size: 18px;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
