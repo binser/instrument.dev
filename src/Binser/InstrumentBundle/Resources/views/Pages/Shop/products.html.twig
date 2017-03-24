@@ -1,33 +1,5 @@
 {% extends '@BinserInstrument/Pages/Shop/base.html.twig' %}
 
-{% block title %}
-    {% if subCategory is defined and subCategory.title %}
-        {{ subCategory.title }}
-    {% elseif category.title %}
-        {{ category.title }}
-    {% else %}
-        {{ parent() }}
-    {% endif %}
-{% endblock %}
-{% block description %}
-    {% if subCategory is defined and subCategory.description %}
-        {{ subCategory.description }}
-    {% elseif category.description %}
-        {{ category.description }}
-    {% else %}
-        {{ parent() }}
-    {% endif %}
-{% endblock %}
-{% block keywords %}
-    {% if subCategory is defined and subCategory.keywords %}
-        {{ subCategory.keywords }}
-    {% elseif category.keywords %}
-        {{ category.keywords }}
-    {% else %}
-        {{ parent() }}
-    {% endif %}
-{% endblock %}
-
 {% block shop_content %}
     <div class="container">
         <div class="row">
@@ -40,6 +12,7 @@
                         {% for product in pagination %}
                             <div class="masonry_thumb product">
                                 <input type="hidden" class="product_id" value="{{ product.id }}">
+                                <input type="hidden" class="product_title_input" value="{{ product.title }}">
                                 <div class="product_title">
                                     <a href="{{ path('binser_instrument_shop_product', {'productId': product.id}) }}">{{ product.title }}</a>
                                 </div>
@@ -80,19 +53,10 @@
     </div>
 {% endblock %}
 
-{% block shop_text %}
-    {% if subCategory is defined and subCategory.seoText %}
-        {{ subCategory.seoText|raw }}
-    {% elseif category.seoText %}
-        {{ category.seoText|raw }}
-    {% else %}
-        {#{{ parent() }}#}
-    {% endif %}
-{% endblock %}
-
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('lib/salvatore.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/binserinstrument/js/basket.js') }}"></script>
     <script type="text/javascript">
         function activateSectionMenu() {
             var $activeMenu = $('li.active', '#shop_menu');
@@ -103,70 +67,6 @@
                 $activeMenu.closest('switch').removeClass('collapsed');
             }
         }
-
-        function changeProductPrice($product, count) {
-            var $priceBlock = $product.find('.product_price'),
-                productPrice = parseInt($product.find('.one_product_price').val()),
-                newProductPrice = count * productPrice;
-
-            $priceBlock.text(newProductPrice);
-        }
-
-        function changeCountProduct($button) {
-            var increment = $button.hasClass('increment'),
-                decrement = !increment,
-
-                $product = $button.closest('.product'),
-                $countBlock = $product.find('.product_count_to_add'),
-                productCount = parseInt($countBlock.text());
-
-            increment && (productCount += 1);
-            decrement && (productCount -= 1);
-            $countBlock.text(productCount);
-
-            switch (productCount) {
-                case 100:
-                    increment && $button.addClass('inactive');
-                    break;
-                case 2:
-                    increment && $product.find('.decrement').removeClass('inactive');
-                    break;
-                case 1:
-                    decrement && $button.addClass('inactive');
-                    break;
-                case 99:
-                    decrement && $product.find('.increment').removeClass('inactive');
-                    break;
-            }
-
-            return productCount;
-        }
-
-        function changeProductInfo() {
-            var $button = $(this),
-                $product = $(this).closest('.product'),
-                count = changeCountProduct($button);
-
-            changeProductPrice($product, count);
-        }
-
-        function saveBasketProducts(data) {
-            localStorage.setItem('basket_products', JSON.stringify(data));
-        }
-
-        function getBasketProducts() {
-            return JSON.parse(localStorage.getItem('basket_products'));
-        }
-
-        function saveBasketSum(sum) {
-            localStorage.setItem('basket_sum', sum);
-        }
-
-        function getBasketSum() {
-            localStorage.getItem('basket_sum');
-        }
-
-
         $(document).ready(function() {
             activateSectionMenu();
             $(document).on('click', '.increment:not(.inactive)', changeProductInfo);
@@ -174,13 +74,13 @@
 
             $('.add_to_basket').click(function() {
                 var $product = $(this).closest('.product'),
-                    productId = $product.find('.product_id').val(),
-                    productTitle = $product.find('.product_title').find('a').text(),
-                    productPrice = parseInt($product.find('.one_product_price').val()),
-                    countProductsForAdd = parseInt($product.find('.product_count_to_add').text()),
-                    summForAdd = parseInt($product.find('.product_price').text()),
-                    basketProducts = getBasketProducts() || {},
-                    basketSumm = getBasketSum() || 0;
+                        productId = $product.find('.product_id').val(),
+                        productTitle = $product.find('.product_title_input').val(),
+                        productPrice = parseInt($product.find('.one_product_price').val()),
+                        countProductsForAdd = parseInt($product.find('.product_count_to_add').text()),
+                        summForAdd = parseInt($product.find('.product_price').text()),
+                        basketProducts = getBasketProducts() || {},
+                        basketSumm = getBasketSum() || 0;
 
                 if (basketProducts && basketProducts.hasOwnProperty(productId)) {
                     basketProducts[productId][2] += countProductsForAdd;

@@ -6,63 +6,66 @@
 {% endblock %}
 
 {% block shop_content %}
-<div class="container" id="shop_product">
-    <div class="row">
-        <div class="col-sm-3" id="shop_menu">
-            {{ knp_menu_render('shop', {'currentClass': 'active'}) }}
-        </div>
-        <div class="col-sm-9" id="shop_product">
-            <div class="row">
-                <div class="col-sm-6 text-center">
-                    {% thumbnail product.mainImage, 'medium' with {'class': 'main_image'} %}
-                    {% for photo in photos %}
-                        <div class="col-xs-4 thumb_image_block">
-                            <a href="{% path photo.media, 'big' %}" data-lightbox="galery-set">
-                                {% thumbnail photo.media, 'medium' with {'class': 'thumb_image'} %}
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="col-sm-6">
-                    <h1 class="product_title">{{ product.title }}</h1>
-                    <div class="row product_price_block">
-                        <div class="col-xs-4">Цена</div>
-                        <div class="col-xs-4 text-center">
-                            <span class="decrement">-</span>&nbsp;
-                            <span class="product_count_to_add">1</span>&nbsp;
-                            <span class="increment">+</span>
-                        </div>
-                        <div class="col-xs-4 text-right">
-                            {{ product.price }} руб.
-                        </div>
+    <div class="container" id="shop_product">
+        <div class="row">
+            <div class="col-sm-3" id="shop_menu">
+                {{ knp_menu_render('shop', {'currentClass': 'active'}) }}
+            </div>
+            <div class="col-sm-9" id="shop_product">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        {% thumbnail product.mainImage, 'medium' with {'class': 'main_image'} %}
+                        {% for photo in photos %}
+                            <div class="col-xs-4 thumb_image_block">
+                                <a href="{% path photo.media, 'big' %}" data-lightbox="galery-set">
+                                    {% thumbnail photo.media, 'medium' with {'class': 'thumb_image'} %}
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
-                    <div class="row text-right">
-                        <div class="add_to_basket">В корзину</div>
-                    </div>
-                    <p class="header_paragraph text-center">Технические характеристики</p>
-                    <p class="text">
-                        {{ product.characteristics|raw }}
-                    </p>
-                </div>
-                <div class="col-xs-12">
-                    <p class="header_paragraph text-center">Описание</p>
-                    <p class="text">
-                        {{ product.description|raw }}
-                    </p>
-                </div>
-                <div class="col-xs-12">
-                    {% if not is_granted('ROLE_USER') %}
-                        <div class="alert alert-info">
-                            Для того чтобы оставить комментарий вы должны <a href="{{ path('fos_user_security_login') }}" class="text-success">залогиниться</a>.<br>
-                            Если у ват нет учетной записи на нашем сайте <a href="{{ path('fos_user_registration_register') }}" class="text-success">пройдите регистрацию</a>.
+                    <div class="col-sm-6 product">
+                        <input type="hidden" class="product_id" value="{{ product.id }}">
+                        <input type="hidden" class="product_title_input" value="{{ product.title }}">
+                        <h1 class="product_title">{{ product.title }}</h1>
+                        <div class="row product_price_block">
+                            <div class="col-xs-4">Цена</div>
+                            <div class="col-xs-4 text-center">
+                                <span class="decrement">-</span>&nbsp;
+                                <span class="product_count_to_add">1</span>&nbsp;
+                                <span class="increment">+</span>
+                            </div>
+                            <div class="col-xs-4 text-right">
+                                <input type="hidden" class="one_product_price" value="{{ product.price }}">
+                                <span class="product_price">{{ product.price }}</span> руб.
+                            </div>
                         </div>
-                    {% endif %}
-                    {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': product.id} %}
+                        <div class="row text-right">
+                            <div class="add_to_basket">В корзину</div>
+                        </div>
+                        <p class="header_paragraph text-center">Технические характеристики</p>
+                        <p class="text">
+                            {{ product.characteristics|raw }}
+                        </p>
+                    </div>
+                    <div class="col-xs-12">
+                        <p class="header_paragraph text-center">Описание</p>
+                        <p class="text">
+                            {{ product.description|raw }}
+                        </p>
+                    </div>
+                    <div class="col-xs-12">
+                        {% if not is_granted('ROLE_USER') %}
+                            <div class="alert alert-info">
+                                Для того чтобы оставить комментарий вы должны <a href="{{ path('fos_user_security_login') }}" class="text-success">залогиниться</a>.<br>
+                                Если у ват нет учетной записи на нашем сайте <a href="{{ path('fos_user_registration_register') }}" class="text-success">пройдите регистрацию</a>.
+                            </div>
+                        {% endif %}
+                        {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': product.id} %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 {% block shop_text %}
@@ -71,10 +74,35 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('lib/lightbox/lightbox.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/binserinstrument/js/basket.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $(".thumb_image").hover(function () {
                 $('.main_image').attr('src', $(this).attr('src'));
+            });
+
+            $(document).on('click', '.increment:not(.inactive)', changeProductInfo);
+            $(document).on('click', '.decrement:not(.inactive)', changeProductInfo);
+
+            $('.add_to_basket').click(function() {
+                var $product = $(this).closest('.product'),
+                        productId = $product.find('.product_id').val(),
+                        productTitle = $product.find('.product_title_input').val(),
+                        productPrice = parseInt($product.find('.one_product_price').val()),
+                        countProductsForAdd = parseInt($product.find('.product_count_to_add').text()),
+                        summForAdd = parseInt($product.find('.product_price').text()),
+                        basketProducts = getBasketProducts() || {},
+                        basketSumm = getBasketSum() || 0;
+
+                if (basketProducts && basketProducts.hasOwnProperty(productId)) {
+                    basketProducts[productId][2] += countProductsForAdd;
+                } else {
+                    basketProducts[productId] = [productTitle, productPrice, countProductsForAdd];
+                }
+                basketSumm += summForAdd;
+
+                saveBasketProducts(basketProducts);
+                saveBasketSum(basketSumm);
             });
         });
     </script>
